@@ -1,30 +1,30 @@
-import {
-  Navbar as NextUINavbar,
-  NavbarContent,
-  NavbarMenu,
-  NavbarMenuToggle,
-  NavbarBrand,
-  NavbarItem,
-  NavbarMenuItem,
-} from "@nextui-org/navbar";
 import { Button } from "@nextui-org/button";
+import { Input } from "@nextui-org/input";
 import { Kbd } from "@nextui-org/kbd";
 import { Link } from "@nextui-org/link";
-import { Input } from "@nextui-org/input";
-import { link as linkStyles } from "@nextui-org/theme";
-import NextLink from "next/link";
-import clsx from "clsx";
-
-import { siteConfig } from "@/config/site";
-import { ThemeSwitch } from "@/components/theme-switch";
 import {
-  TwitterIcon,
-  GithubIcon,
+  NavbarBrand,
+  NavbarContent,
+  NavbarItem,
+  NavbarMenu,
+  NavbarMenuItem,
+  NavbarMenuToggle,
+  Navbar as NextUINavbar,
+} from "@nextui-org/navbar";
+import { link as linkStyles } from "@nextui-org/theme";
+import clsx from "clsx";
+import NextLink from "next/link";
+
+import {
   DiscordIcon,
+  GithubIcon,
   HeartFilledIcon,
-  SearchIcon,
   Logo,
+  SearchIcon,
+  TwitterIcon,
 } from "@/components/icons";
+import { ThemeSwitch } from "@/components/theme-switch";
+import { siteConfig } from "@/config/site";
 
 export const Navbar = () => {
   const searchInput = (
@@ -57,13 +57,13 @@ export const Navbar = () => {
             <p className="font-bold text-inherit">ACME</p>
           </NextLink>
         </NavbarBrand>
-        <ul className="hidden lg:flex gap-4 justify-start ml-2">
+        <ul className="hidden md:flex gap-4 justify-start ml-2">
           {siteConfig.navItems.map((item) => (
             <NavbarItem key={item.href}>
               <NextLink
                 className={clsx(
                   linkStyles({ color: "foreground" }),
-                  "data-[active=true]:text-primary data-[active=true]:font-medium",
+                  "data-[active=true]:text-primary data-[active=true]:font-medium"
                 )}
                 color="foreground"
                 href={item.href}
@@ -79,7 +79,7 @@ export const Navbar = () => {
         className="hidden sm:flex basis-1/5 sm:basis-full"
         justify="end"
       >
-        <NavbarItem className="hidden sm:flex gap-2">
+        <NavbarItem className="hidden md:flex gap-2">
           <Link isExternal aria-label="Twitter" href={siteConfig.links.twitter}>
             <TwitterIcon className="text-default-500" />
           </Link>
@@ -106,7 +106,7 @@ export const Navbar = () => {
         </NavbarItem>
       </NavbarContent>
 
-      <NavbarContent className="sm:hidden basis-1 pl-4" justify="end">
+      <NavbarContent className="md:hidden basis-1 pl-4" justify="end">
         <Link isExternal aria-label="Github" href={siteConfig.links.github}>
           <GithubIcon className="text-default-500" />
         </Link>
