@@ -1,13 +1,14 @@
 import "@/styles/globals.css";
-import { Link } from "@nextui-org/link";
 import clsx from "clsx";
 import { Metadata, Viewport } from "next";
 
 import { Providers } from "./providers";
 
+import { HeartFilledIcon } from "@/components/icons";
 import { Navbar } from "@/components/navbar";
 import { fontSans } from "@/config/fonts";
 import { siteConfig } from "@/config/site";
+import { Link } from "@nextui-org/link";
 
 export const metadata: Metadata = {
   title: {
@@ -47,16 +48,21 @@ export default function RootLayout({
             <main className="mx-auto w-full max-w-7xl flex-grow px-12 pt-16">
               {children}
             </main>
-            <footer className="flex w-full items-center justify-center py-3">
-              <Link
-                isExternal
-                className="flex items-center gap-1 text-current"
-                href="https://nextui-docs-v2.vercel.app?utm_source=next-app-template"
-                title="nextui.org homepage"
-              >
-                <span className="text-default-600">Powered by</span>
-                <p className="text-primary">NextUI</p>
-              </Link>
+            <footer className="flex w-full flex-col items-center py-3">
+              <p className="gap-1">
+                Made with{" "}
+                <HeartFilledIcon className="inline text-red-500 opacity-80" />{" "}
+                and{" "}
+                <Link
+                  isExternal
+                  className="space-x-1"
+                  href="https://nextui.org/"
+                  title="nextui.org homepage"
+                >
+                  NextUI
+                </Link>
+              </p>
+              <p>Lorenz Boss | ©{new Date().getFullYear()}</p>
             </footer>
           </div>
         </Providers>
