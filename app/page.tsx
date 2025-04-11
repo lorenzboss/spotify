@@ -1,10 +1,12 @@
 "use client";
 
-import { AvatarIcon, SearchIcon } from "@/components/icons";
 import { Autocomplete, AutocompleteItem } from "@heroui/autocomplete";
 import { useCallback, useEffect, useRef, useState } from "react";
+
 import { searchArtists } from "../lib/data";
 import { Artist } from "../lib/definitions";
+
+import { AvatarIcon, SearchIcon } from "@/components/icons";
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -16,12 +18,14 @@ export default function Home() {
     if (query.trim() === "") {
       setArtists([]);
       setIsLoading(false);
+
       return;
     }
 
     setIsLoading(true);
     try {
       const artistsData = await searchArtists(query);
+
       setArtists(artistsData);
     } catch (error) {
       console.error("Error while searching for artists:", error);
@@ -62,16 +66,16 @@ export default function Home() {
       <h1 className="text-4xl font-bold">Spotify API</h1>
       <div className="mt-5 w-1/2">
         <Autocomplete
-          size="lg"
-          placeholder="Search for your favorite artist!"
           className="w-full"
           defaultItems={artists}
-          items={artists}
           inputValue={searchQuery}
+          isLoading={isLoading}
+          items={artists}
+          placeholder="Search for your favorite artist!"
+          size="lg"
+          startContent={<SearchIcon size={20} />}
           onInputChange={handleInputChange}
           onSelectionChange={handleSelectionChange}
-          isLoading={isLoading}
-          startContent={<SearchIcon size={20} />}
         >
           {(artist) => (
             <AutocompleteItem key={artist.id} textValue={artist.name}>
@@ -80,9 +84,9 @@ export default function Home() {
                 artist.images.length > 0 &&
                 artist.images[0]?.url ? (
                   <img
-                    src={artist.images[0].url}
                     alt={artist.name}
                     className="h-10 w-10 rounded-full object-cover"
+                    src={artist.images[0].url}
                   />
                 ) : (
                   <AvatarIcon size={40} />

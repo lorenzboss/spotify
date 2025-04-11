@@ -1,6 +1,5 @@
 "use client";
 
-import { formatDuration } from "@/lib/formatters";
 import { Card, CardBody } from "@heroui/card";
 import { Chip } from "@heroui/chip";
 import { Skeleton } from "@heroui/skeleton";
@@ -16,8 +15,11 @@ import {
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useState } from "react";
+
 import Error from "../../components/error";
 import { fetchAlbumDetails } from "../../lib/data";
+
+import { formatDuration } from "@/lib/formatters";
 
 function AlbumHeaderSkeleton() {
   return (
@@ -55,9 +57,9 @@ function AlbumHeader({ album }) {
       <div className="flex flex-col md:flex-row">
         {album.images && album.images.length > 0 ? (
           <img
-            src={album.images[0].url}
             alt={album.name}
             className="h-64 w-64 flex-shrink-0 object-cover"
+            src={album.images[0].url}
           />
         ) : (
           <div className="flex h-64 w-64 items-center justify-center bg-default-200">
@@ -78,8 +80,8 @@ function AlbumHeader({ album }) {
               {album.artists.map((artist, index) => (
                 <span key={artist.id}>
                   <Link
-                    href={`/artist?id=${artist.id}`}
                     className="text-primary hover:underline"
+                    href={`/artist?id=${artist.id}`}
                   >
                     {artist.name}
                   </Link>
@@ -163,12 +165,14 @@ function TrackTable({ tracks }) {
     // Duration sorting
     if (sortDescriptor.column === "duration") {
       const result = a.duration_ms - b.duration_ms;
+
       return sortDescriptor.direction === "ascending" ? result : -result;
     }
 
     // Name column behaves like default (track number) sort
     if (sortDescriptor.column === "name") {
       const result = a.track_number - b.track_number;
+
       return sortDescriptor.direction === "ascending" ? result : -result;
     }
 
@@ -201,7 +205,7 @@ function TrackTable({ tracks }) {
                   </span>
                   <span>{track.name}</span>
                   {track.explicit && (
-                    <Chip size="sm" color="danger" variant="flat">
+                    <Chip color="danger" size="sm" variant="flat">
                       E
                     </Chip>
                   )}
@@ -212,8 +216,8 @@ function TrackTable({ tracks }) {
                   {track.artists.map((artist, index) => (
                     <span key={artist.id}>
                       <Link
-                        href={`/artist?id=${artist.id}`}
                         className="text-primary hover:underline"
+                        href={`/artist?id=${artist.id}`}
                       >
                         {artist.name}
                       </Link>

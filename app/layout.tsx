@@ -1,13 +1,11 @@
-import "@/styles/globals.css";
-import clsx from "clsx";
-import { Metadata, Viewport } from "next";
-
-import { Providers } from "./providers";
-
 import Footer from "@/components/footer";
 import { Navbar } from "@/components/navbar";
 import { fontSans } from "@/lib/fonts";
+import "@/styles/globals.css";
+import clsx from "clsx";
+import { Metadata, Viewport } from "next";
 import { Roboto_Serif } from "next/font/google";
+import { Providers } from "./providers";
 
 const robotoSerif = Roboto_Serif({ subsets: ["latin"] });
 

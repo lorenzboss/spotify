@@ -1,19 +1,21 @@
 "use client";
 
-import ArtistDetails, {
-  ArtistDetailsSkeleton,
-} from "@/components/artist/ArtistDetails";
-import MusicCollection, {
-  MusicCollectionTabsSkeleton,
-} from "@/components/artist/MusicCollection";
 import { useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useState } from "react";
+
 import Error from "../../components/error";
 import {
   fetchArtistAlbums,
   fetchArtistDetails,
   fetchArtistPlaylists,
 } from "../../lib/data";
+
+import MusicCollection, {
+  MusicCollectionTabsSkeleton,
+} from "@/components/artist/MusicCollection";
+import ArtistDetails, {
+  ArtistDetailsSkeleton,
+} from "@/components/artist/ArtistDetails";
 
 export default function ArtistPage() {
   const searchParams = useSearchParams();
@@ -32,11 +34,13 @@ export default function ArtistPage() {
     const loadArtistData = async () => {
       if (!artistId) {
         setArtistLoading(false);
+
         return;
       }
 
       try {
         const artistData = await fetchArtistDetails(artistId);
+
         setArtist(artistData);
       } catch (e) {
         setError("Failed to load artist details. Please try again later.");
@@ -52,11 +56,13 @@ export default function ArtistPage() {
     const loadMusicData = async () => {
       if (!artistId) {
         setMusicLoading(false);
+
         return;
       }
 
       try {
         const albums = await fetchArtistAlbums(artistId);
+
         setMusicData((prevData) => ({ ...prevData, albums }));
         setAlbumsLoaded(true);
       } catch (e) {
@@ -76,6 +82,7 @@ export default function ArtistPage() {
       const loadPlaylists = async () => {
         try {
           const playlists = await fetchArtistPlaylists(artist?.name || "");
+
           setMusicData((prevData) => ({ ...prevData, playlists }));
         } catch (e) {
           setError("Failed to load playlists. Please try again later.");
@@ -101,8 +108,8 @@ export default function ArtistPage() {
       <Suspense fallback={<MusicCollectionTabsSkeleton />}>
         <MusicCollection
           albums={musicData.albums}
-          playlists={musicData.playlists}
           isLoading={musicLoading}
+          playlists={musicData.playlists}
         />
       </Suspense>
     </div>

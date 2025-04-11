@@ -1,6 +1,5 @@
 "use client";
 
-import { formatDate, formatDuration } from "@/lib/formatters";
 import { Card, CardBody } from "@heroui/card";
 import { Chip } from "@heroui/chip";
 import { Skeleton } from "@heroui/skeleton";
@@ -16,8 +15,11 @@ import {
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useState } from "react";
+
 import Error from "../../components/error";
 import { fetchPlaylistDetails } from "../../lib/data";
+
+import { formatDate, formatDuration } from "@/lib/formatters";
 
 function PlaylistHeaderSkeleton() {
   return (
@@ -63,9 +65,9 @@ function PlaylistHeader({ playlist }) {
       <div className="flex flex-col md:flex-row">
         {playlist.images && playlist.images.length > 0 ? (
           <img
-            src={playlist.images[0].url}
             alt={playlist.name}
             className="h-64 w-64 flex-shrink-0 object-cover"
+            src={playlist.images[0].url}
           />
         ) : (
           <div className="flex h-64 w-64 items-center justify-center bg-default-200">
@@ -176,18 +178,21 @@ function TrackTable({ tracks }) {
       const dateA = new Date(a.added_at);
       const dateB = new Date(b.added_at);
       const result = dateA.getTime() - dateB.getTime();
+
       return sortDescriptor.direction === "ascending" ? result : -result;
     }
 
     // Duration sorting
     if (sortDescriptor.column === "duration") {
       const result = trackA.duration_ms - trackB.duration_ms;
+
       return sortDescriptor.direction === "ascending" ? result : -result;
     }
 
     // Name sorting
     if (sortDescriptor.column === "name") {
       const result = trackA.name.localeCompare(trackB.name);
+
       return sortDescriptor.direction === "ascending" ? result : -result;
     }
 
@@ -196,6 +201,7 @@ function TrackTable({ tracks }) {
       const albumA = trackA.album?.name || "";
       const albumB = trackB.album?.name || "";
       const result = albumA.localeCompare(albumB);
+
       return sortDescriptor.direction === "ascending" ? result : -result;
     }
 
@@ -204,6 +210,7 @@ function TrackTable({ tracks }) {
       const artistA = trackA.artists[0]?.name || "";
       const artistB = trackB.artists[0]?.name || "";
       const result = artistA.localeCompare(artistB);
+
       return sortDescriptor.direction === "ascending" ? result : -result;
     }
 
@@ -247,8 +254,8 @@ function TrackTable({ tracks }) {
                           {track.artists.map((artist, index) => (
                             <span key={artist.id}>
                               <Link
-                                href={`/artist?id=${artist.id}`}
                                 className="text-default-500 hover:text-primary hover:underline"
+                                href={`/artist?id=${artist.id}`}
                               >
                                 {artist.name}
                               </Link>
@@ -258,7 +265,7 @@ function TrackTable({ tracks }) {
                         </div>
                       </div>
                       {track.explicit && (
-                        <Chip size="sm" color="danger" variant="flat">
+                        <Chip color="danger" size="sm" variant="flat">
                           E
                         </Chip>
                       )}
@@ -267,8 +274,8 @@ function TrackTable({ tracks }) {
                   <TableCell>
                     {track.album && (
                       <Link
-                        href={`/album?id=${track.album.id}`}
                         className="hover:text-primary hover:underline"
+                        href={`/album?id=${track.album.id}`}
                       >
                         {track.album.name}
                       </Link>
@@ -299,11 +306,13 @@ export default function PlaylistPage() {
       if (!playlistId) {
         setIsLoading(false);
         setError("No playlist ID provided");
+
         return;
       }
 
       try {
         const playlistData = await fetchPlaylistDetails(playlistId);
+
         setPlaylist(playlistData);
       } catch (error) {
         setError("Failed to load playlist details. Please try again later.");

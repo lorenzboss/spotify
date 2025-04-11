@@ -142,8 +142,8 @@ export const AvatarIcon = ({ size = 24, ...props }: IconSvgProps) => (
 export const MusicIcon = ({ size = 24, ...props }: IconSvgProps) => (
   <svg
     aria-hidden="true"
-    focusable="false"
     fill="#A1A1AA"
+    focusable="false"
     height={size}
     role="presentation"
     viewBox="0 0 24 24"

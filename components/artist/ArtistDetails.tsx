@@ -1,6 +1,7 @@
 import { Card, CardBody, CardFooter } from "@heroui/card";
 import { Chip } from "@heroui/chip";
 import { Skeleton } from "@heroui/skeleton";
+
 import { AvatarIcon } from "../icons";
 
 export default function ArtistDetails({ artist }) {
@@ -11,12 +12,12 @@ export default function ArtistDetails({ artist }) {
       <CardBody className="flex aspect-square p-0">
         {artist.images?.length ? (
           <img
-            src={artist.images[0].url}
             alt={artist.name}
             className="object-cover"
+            src={artist.images[0].url}
           />
         ) : (
-          <AvatarIcon size={208} className="m-auto" />
+          <AvatarIcon className="m-auto" size={208} />
         )}
       </CardBody>
       <CardFooter className="flex flex-col items-start p-6 text-left">
@@ -25,7 +26,7 @@ export default function ArtistDetails({ artist }) {
             <h1 className="mb-2 text-3xl font-bold">{artist.name}</h1>
             <div className="mb-4 flex flex-wrap gap-2">
               {artist.genres.map((genre) => (
-                <Chip key={genre} variant="flat" color="secondary" size="sm">
+                <Chip key={genre} color="secondary" size="sm" variant="flat">
                   {genre}
                 </Chip>
               ))}

@@ -1,24 +1,26 @@
 import { Card, CardBody, CardFooter } from "@heroui/card";
 import Link from "next/link";
+
 import { MusicIcon } from "../icons";
 
 export default function MusicItem({ item }) {
   const isAlbum = item.type === "album";
+
   return (
     <Card
+      isPressable
       as={Link}
       href={isAlbum ? `/album?id=${item.id}` : `/playlist?id=${item.id}`}
-      isPressable
     >
       <CardBody className="p-0">
         {item.images?.length ? (
           <img
-            src={item.images[0].url}
             alt={item.name}
             className="aspect-square w-full object-cover"
+            src={item.images[0].url}
           />
         ) : (
-          <MusicIcon size={100} className="m-auto" />
+          <MusicIcon className="m-auto" size={100} />
         )}
       </CardBody>
       <CardFooter className="flex flex-col items-start p-3">

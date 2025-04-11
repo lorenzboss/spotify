@@ -48,6 +48,7 @@ async function getAccessToken(): Promise<string> {
 
 async function withValidToken<T>(apiCall: () => Promise<T>): Promise<T> {
   const token = await getAccessToken();
+
   spotifyApi.setAccessToken(token);
 
   return apiCall();

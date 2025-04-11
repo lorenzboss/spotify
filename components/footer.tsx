@@ -1,4 +1,5 @@
 import { Link } from "@heroui/link";
+
 import { HeartFilledIcon } from "./icons";
 
 export default function Footer() {

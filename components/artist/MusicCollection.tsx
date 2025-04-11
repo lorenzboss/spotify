@@ -45,9 +45,9 @@ export default function MusicCollection({ albums, playlists, isLoading }) {
     <>
       <h2 className="mb-6 text-2xl font-bold">Music</h2>
       <Tabs
+        className="mb-8 lg:w-1/2"
         selectedKey={filter}
         onSelectionChange={(key) => setFilter(String(key))}
-        className="mb-8 lg:w-1/2"
       >
         <Tab key="all" title="All" />
         <Tab key="singles" title="Singles" />
