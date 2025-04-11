@@ -25,7 +25,7 @@ export default function Home() {
       const artistsData = await searchArtists(query);
       setArtists(artistsData);
     } catch (error) {
-      console.error("Fehler beim Suchen nach Künstlern:", error);
+      console.error("Error while searching for artists:", error);
       setArtists([]);
     } finally {
       setIsLoading(false);
@@ -72,7 +72,7 @@ export default function Home() {
           onInputChange={handleInputChange}
           onSelectionChange={handleSelectionChange}
           isLoading={isLoading}
-          startContent={<SearchIcon />}
+          startContent={<SearchIcon size={20} />}
         >
           {(artist) => (
             <AutocompleteItem key={artist.id} textValue={artist.name}>
@@ -86,7 +86,7 @@ export default function Home() {
                     className="h-10 w-10 rounded-full object-cover"
                   />
                 ) : (
-                  <AvatarIcon />
+                  <AvatarIcon size={40} />
                 )}
                 <span>{artist.name}</span>
               </div>
