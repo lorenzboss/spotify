@@ -19,7 +19,6 @@ import { Suspense, useEffect, useState } from "react";
 import Error from "../../components/error";
 import { fetchPlaylistDetails } from "../../lib/data";
 
-// Playlist Header Skeleton Component
 function PlaylistHeaderSkeleton() {
   return (
     <Card className="mb-8 overflow-hidden">
@@ -42,7 +41,6 @@ function PlaylistHeaderSkeleton() {
   );
 }
 
-// Playlist Header Component
 function PlaylistHeader({ playlist }) {
   if (!playlist) return null;
 
@@ -124,7 +122,6 @@ function PlaylistHeader({ playlist }) {
   );
 }
 
-// Track Table Skeleton Component
 function TrackTableSkeleton() {
   return (
     <Card>
@@ -163,7 +160,6 @@ function TrackTableSkeleton() {
   );
 }
 
-// Track Table Component
 function TrackTable({ tracks }) {
   const [sortDescriptor, setSortDescriptor] = useState<SortDescriptor>({
     column: "added_at",
@@ -289,7 +285,6 @@ function TrackTable({ tracks }) {
   );
 }
 
-// Main Component
 export default function PlaylistPage() {
   const searchParams = useSearchParams();
   const playlistId = searchParams.get("id");

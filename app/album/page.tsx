@@ -19,7 +19,6 @@ import { Suspense, useEffect, useState } from "react";
 import Error from "../../components/error";
 import { fetchAlbumDetails } from "../../lib/data";
 
-// Album Header Skeleton Component
 function AlbumHeaderSkeleton() {
   return (
     <Card className="mb-8 overflow-hidden">
@@ -41,11 +40,9 @@ function AlbumHeaderSkeleton() {
   );
 }
 
-// Album Header Component
 function AlbumHeader({ album }) {
   if (!album) return null;
 
-  // Format release date
   const releaseDate = new Date(album.release_date);
   const formattedDate = new Intl.DateTimeFormat("en-US", {
     year: "numeric",
@@ -117,7 +114,6 @@ function AlbumHeader({ album }) {
   );
 }
 
-// Track Table Skeleton Component
 function TrackTableSkeleton() {
   return (
     <Card>
@@ -152,14 +148,12 @@ function TrackTableSkeleton() {
   );
 }
 
-// Track Table Component
 function TrackTable({ tracks }) {
   const [sortDescriptor, setSortDescriptor] = useState<SortDescriptor>({
     column: "",
     direction: "ascending",
   });
 
-  // Sort tracks based on the current sort descriptor
   const sortedTracks = [...tracks].sort((a, b) => {
     // Default sorting (track number)
     if (sortDescriptor.column === "") {
@@ -237,7 +231,6 @@ function TrackTable({ tracks }) {
   );
 }
 
-// Main Component
 export default function AlbumPage() {
   const searchParams = useSearchParams();
   const albumId = searchParams.get("id");
