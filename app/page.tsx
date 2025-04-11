@@ -1,7 +1,6 @@
 "use client";
 
 import { AvatarIcon, SearchIcon } from "@/components/icons";
-import { title } from "@/lib/primitives";
 import { Autocomplete, AutocompleteItem } from "@heroui/autocomplete";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { searchArtists } from "../lib/data";
@@ -60,7 +59,7 @@ export default function Home() {
 
   return (
     <div className="flex flex-col items-center">
-      <h1 className={title()}>Spotify API</h1>
+      <h1 className="text-4xl font-bold">Spotify API</h1>
       <div className="mt-5 w-1/2">
         <Autocomplete
           size="lg"
