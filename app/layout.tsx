@@ -4,18 +4,17 @@ import { Metadata, Viewport } from "next";
 
 import { Providers } from "./providers";
 
-import { HeartFilledIcon } from "@/components/icons";
+import Footer from "@/components/footer";
 import { Navbar } from "@/components/navbar";
-import { fontSans } from "@/config/fonts";
-import { siteConfig } from "@/config/site";
-import { Link } from "@nextui-org/link";
+import { fontSans } from "@/lib/fonts";
+import { Roboto_Serif } from "next/font/google";
+
+const robotoSerif = Roboto_Serif({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: {
-    default: siteConfig.name,
-    template: `%s - ${siteConfig.name}`,
-  },
-  description: siteConfig.description,
+  title: "Spotify API",
+  description:
+    "A small Next.js Application that uses the Spotify API to search for your favorite artists!",
   icons: {
     icon: "/favicon.ico",
   },
@@ -48,22 +47,7 @@ export default function RootLayout({
             <main className="mx-auto w-full max-w-7xl flex-grow px-12 pt-16">
               {children}
             </main>
-            <footer className="flex w-full flex-col items-center py-3">
-              <p className="gap-1">
-                Made with{" "}
-                <HeartFilledIcon className="inline text-red-500 opacity-80" />{" "}
-                and{" "}
-                <Link
-                  isExternal
-                  className="space-x-1"
-                  href="https://nextui.org/"
-                  title="nextui.org homepage"
-                >
-                  NextUI
-                </Link>
-              </p>
-              <p>Lorenz Boss | ©{new Date().getFullYear()}</p>
-            </footer>
+            <Footer />
           </div>
         </Providers>
       </body>
