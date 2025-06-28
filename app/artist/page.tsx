@@ -4,18 +4,14 @@ import { useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useState } from "react";
 
 import Error from "../../components/error";
-import {
-  fetchArtistAlbums,
-  fetchArtistDetails,
-  fetchArtistPlaylists,
-} from "../../lib/data";
+import { fetchArtistAlbums, fetchArtistDetails } from "../../lib/data";
 
-import MusicCollection, {
-  MusicCollectionTabsSkeleton,
-} from "@/components/artist/MusicCollection";
 import ArtistDetails, {
   ArtistDetailsSkeleton,
 } from "@/components/artist/ArtistDetails";
+import MusicCollection, {
+  MusicCollectionTabsSkeleton,
+} from "@/components/artist/MusicCollection";
 
 export default function ArtistPage() {
   const searchParams = useSearchParams();
@@ -23,7 +19,6 @@ export default function ArtistPage() {
   const [artist, setArtist] = useState<{ name: string } | null>(null);
   const [musicData, setMusicData] = useState<any>({
     albums: [],
-    playlists: [],
   });
   const [error, setError] = useState<string | null>(null);
   const [artistLoading, setArtistLoading] = useState(true);
@@ -77,22 +72,6 @@ export default function ArtistPage() {
     }
   }, [artist, albumsLoaded]);
 
-  useEffect(() => {
-    if (albumsLoaded) {
-      const loadPlaylists = async () => {
-        try {
-          const playlists = await fetchArtistPlaylists(artist?.name || "");
-
-          setMusicData((prevData) => ({ ...prevData, playlists }));
-        } catch (e) {
-          setError("Failed to load playlists. Please try again later.");
-        }
-      };
-
-      loadPlaylists();
-    }
-  }, [albumsLoaded]);
-
   if (error) {
     return <Error error={error} />;
   }
@@ -106,11 +85,7 @@ export default function ArtistPage() {
       )}
 
       <Suspense fallback={<MusicCollectionTabsSkeleton />}>
-        <MusicCollection
-          albums={musicData.albums}
-          isLoading={musicLoading}
-          playlists={musicData.playlists}
-        />
+        <MusicCollection albums={musicData.albums} isLoading={musicLoading} />
       </Suspense>
     </div>
   );

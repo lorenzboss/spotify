@@ -76,22 +76,8 @@ export const fetchArtistAlbums = cache(async (artistId: string) => {
   );
 });
 
-export const fetchArtistPlaylists = cache(async (artistName: string) => {
-  return withValidToken(() =>
-    spotifyApi
-      .searchPlaylists(artistName)
-      .then((data) => data.body.playlists?.items || []),
-  );
-});
-
 export const fetchAlbumDetails = cache(async (albumId: string) => {
   return withValidToken(() =>
     spotifyApi.getAlbum(albumId).then((data) => data.body),
-  );
-});
-
-export const fetchPlaylistDetails = cache(async (playlistId: string) => {
-  return withValidToken(() =>
-    spotifyApi.getPlaylist(playlistId).then((data) => data.body),
   );
 });

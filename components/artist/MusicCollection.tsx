@@ -5,7 +5,7 @@ import { useState } from "react";
 
 import MusicItem from "./MusicItem";
 
-export default function MusicCollection({ albums, playlists, isLoading }) {
+export default function MusicCollection({ albums, isLoading }) {
   const [filter, setFilter] = useState("all");
 
   const displayItems = () => {
@@ -23,8 +23,6 @@ export default function MusicCollection({ albums, playlists, isLoading }) {
         return sortByDate(albums.filter((a) => a.album_type === "single"));
       case "albums":
         return sortByDate(albums.filter((a) => a.album_type === "album"));
-      case "playlists":
-        return playlists;
       default:
         return sortByDate(albums);
     }
@@ -52,7 +50,6 @@ export default function MusicCollection({ albums, playlists, isLoading }) {
         <Tab key="all" title="All" />
         <Tab key="singles" title="Singles" />
         <Tab key="albums" title="Albums" />
-        <Tab key="playlists" title="Playlists" />
       </Tabs>
       {items && items.filter((item) => item !== null).length > 0 ? (
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
