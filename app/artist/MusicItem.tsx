@@ -1,7 +1,7 @@
 import { Card, CardBody, CardFooter } from "@heroui/card";
 import Link from "next/link";
 
-import { MusicIcon } from "../icons";
+import { MusicIcon } from "../../components/icons";
 
 export default function MusicItem({ item }) {
   return (

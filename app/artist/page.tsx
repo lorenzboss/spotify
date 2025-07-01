@@ -8,10 +8,10 @@ import { fetchArtistAlbums, fetchArtistDetails } from "../../lib/data";
 
 import ArtistDetails, {
   ArtistDetailsSkeleton,
-} from "@/components/artist/ArtistDetails";
+} from "@/app/artist/ArtistDetails";
 import MusicCollection, {
   MusicCollectionTabsSkeleton,
-} from "@/components/artist/MusicCollection";
+} from "@/app/artist/MusicCollection";
 
 export default function ArtistPage() {
   const searchParams = useSearchParams();

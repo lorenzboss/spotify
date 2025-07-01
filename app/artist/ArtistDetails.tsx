@@ -2,7 +2,7 @@ import { Card, CardBody, CardFooter } from "@heroui/card";
 import { Chip } from "@heroui/chip";
 import { Skeleton } from "@heroui/skeleton";
 
-import { AvatarIcon } from "../icons";
+import { AvatarIcon } from "../../components/icons";
 
 export default function ArtistDetails({ artist }) {
   if (!artist) return null;
