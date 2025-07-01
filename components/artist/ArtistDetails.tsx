@@ -9,11 +9,11 @@ export default function ArtistDetails({ artist }) {
 
   return (
     <Card className="mx-auto mb-8 w-1/2">
-      <CardBody className="flex aspect-square p-0">
+      <CardBody className="flex aspect-square overflow-hidden p-0">
         {artist.images?.length ? (
           <img
             alt={artist.name}
-            className="object-cover"
+            className="h-full w-full object-cover"
             src={artist.images[0].url}
           />
         ) : (

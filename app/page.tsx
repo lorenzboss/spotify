@@ -3,7 +3,7 @@
 import { Autocomplete, AutocompleteItem } from "@heroui/autocomplete";
 import { useCallback, useEffect, useRef, useState } from "react";
 
-import { searchArtists } from "../lib/data";
+import { fetchArtists } from "../lib/data";
 import { Artist } from "../lib/definitions";
 
 import { AvatarIcon, SearchIcon } from "@/components/icons";
@@ -24,7 +24,7 @@ export default function Home() {
 
     setIsLoading(true);
     try {
-      const artistsData = await searchArtists(query);
+      const artistsData = await fetchArtists(query);
 
       setArtists(artistsData);
     } catch (error) {
