@@ -14,3 +14,7 @@ export function formatDate(dateString) {
     day: "numeric",
   }).format(date);
 }
+
+export function truncate(str, maxLength) {
+  return str.length > maxLength ? str.slice(0, maxLength) + "..." : str;
+}
