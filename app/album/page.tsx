@@ -1,15 +1,14 @@
+import { TrackTable } from "@/app/album/track-table";
+import Error from "@/components/error";
+import { RecordIcon } from "@/components/icons";
+import { fetchAlbumDetails } from "@/lib/data";
+import { formatDate } from "@/lib/formatters";
 import { Card, CardBody } from "@heroui/card";
 import { Chip } from "@heroui/chip";
 import Link from "next/link";
 
-import { RecordIcon } from "@/components/icons";
-import { formatDate } from "@/lib/formatters";
-import Error from "../../components/error";
-import { fetchAlbumDetails } from "../../lib/data";
-import { TrackTable } from "./track-table";
-
 interface AlbumPageProps {
-  searchParams: { id?: string };
+  searchParams: Promise<{ id?: string }>;
 }
 
 function AlbumHeader({ album }: { album: any }) {
