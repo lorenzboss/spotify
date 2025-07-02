@@ -1,4 +1,4 @@
-import { TrackTable } from "@/app/album/track-table";
+import { TrackTable } from "@/app/album/components/TrackTable";
 import Error from "@/components/error";
 import { RecordIcon } from "@/components/icons";
 import { fetchAlbumDetails } from "@/lib/data";
