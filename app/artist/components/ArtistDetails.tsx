@@ -1,12 +1,20 @@
 import { Card, CardBody, CardFooter } from "@heroui/card";
 import { Chip } from "@heroui/chip";
-import { Skeleton } from "@heroui/skeleton";
+import { AvatarIcon } from "../../../components/icons";
 
-import { AvatarIcon } from "../../components/icons";
+interface Artist {
+  name: string;
+  images?: { url: string }[];
+  genres: string[];
+  followers: { total: number };
+  popularity: number;
+}
 
-export default function ArtistDetails({ artist }) {
-  if (!artist) return null;
+interface ArtistDetailsProps {
+  artist: Artist;
+}
 
+export default function ArtistDetails({ artist }: ArtistDetailsProps) {
   return (
     <Card className="mx-auto mb-8 w-1/2">
       <CardBody className="flex aspect-square overflow-hidden p-0">
@@ -39,27 +47,6 @@ export default function ArtistDetails({ artist }) {
             <p className="text-md font-semibold">
               Popularity: {artist.popularity}/100
             </p>
-          </div>
-        </div>
-      </CardFooter>
-    </Card>
-  );
-}
-
-export function ArtistDetailsSkeleton() {
-  return (
-    <Card className="mx-auto mb-8 w-1/2">
-      <CardBody className="p-0">
-        <Skeleton className="aspect-square w-full rounded-lg" />
-      </CardBody>
-      <CardFooter className="flex flex-col items-start p-6 text-left">
-        <div className="flex w-full flex-col gap-4 md:flex-row md:items-center md:justify-between">
-          <div className="w-full md:w-2/3">
-            <Skeleton className="mb-2 h-8 w-3/4 rounded-lg" />
-          </div>
-          <div className="flex w-full flex-col items-start gap-2 md:w-1/3 md:items-end">
-            <Skeleton className="mb-1 h-5 w-32 rounded-lg" />
-            <Skeleton className="mb-2 h-5 w-36 rounded-lg" />
           </div>
         </div>
       </CardFooter>

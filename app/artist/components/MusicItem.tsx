@@ -1,9 +1,17 @@
 import { Card, CardBody, CardFooter } from "@heroui/card";
 import Link from "next/link";
+import { MusicIcon } from "../../../components/icons";
 
-import { MusicIcon } from "../../components/icons";
+interface MusicItemProps {
+  item: {
+    id: string;
+    name: string;
+    album_type: string;
+    images?: { url: string }[];
+  };
+}
 
-export default function MusicItem({ item }) {
+export default function MusicItem({ item }: MusicItemProps) {
   return (
     <Card isPressable as={Link} href={`/album?id=${item.id}`}>
       <CardBody className="p-0">
