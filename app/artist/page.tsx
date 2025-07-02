@@ -1,17 +1,15 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
-import { Suspense, useEffect, useState } from "react";
-
-import Error from "../../components/error";
-import { fetchArtistAlbums, fetchArtistDetails } from "../../lib/data";
-
 import ArtistDetails, {
   ArtistDetailsSkeleton,
 } from "@/app/artist/ArtistDetails";
 import MusicCollection, {
   MusicCollectionTabsSkeleton,
 } from "@/app/artist/MusicCollection";
+import { useSearchParams } from "next/navigation";
+import { Suspense, useEffect, useState } from "react";
+import Error from "../../components/error";
+import { fetchArtistAlbums, fetchArtistDetails } from "../../lib/data";
 
 export default function ArtistPage() {
   const searchParams = useSearchParams();

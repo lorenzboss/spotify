@@ -144,9 +144,9 @@ export const MusicIcon = ({ size = 24, ...props }: IconSvgProps) => (
     aria-hidden="true"
     fill="#A1A1AA"
     focusable="false"
+    height={size}
     role="presentation"
     viewBox="0 0 24 24"
-    height={size}
     width={size}
     {...props}
   >

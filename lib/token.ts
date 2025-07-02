@@ -34,6 +34,7 @@ export async function getAccessToken(): Promise<string> {
     };
 
     spotifyApi.setAccessToken(token);
+
     return token;
   } catch (error) {
     console.error("Error retrieving the access token:", error);
@@ -43,7 +44,9 @@ export async function getAccessToken(): Promise<string> {
 
 export async function withValidToken<T>(apiCall: () => Promise<T>): Promise<T> {
   const token = await getAccessToken();
+
   spotifyApi.setAccessToken(token);
+
   return apiCall();
 }
 

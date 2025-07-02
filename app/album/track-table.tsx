@@ -47,12 +47,14 @@ export function TrackTable({ tracks }: TrackTableProps) {
     // Duration sorting
     if (sortDescriptor.column === "duration") {
       const result = a.duration_ms - b.duration_ms;
+
       return sortDescriptor.direction === "ascending" ? result : -result;
     }
 
     // Name column behaves like default (track number) sort
     if (sortDescriptor.column === "name") {
       const result = a.track_number - b.track_number;
+
       return sortDescriptor.direction === "ascending" ? result : -result;
     }
 
