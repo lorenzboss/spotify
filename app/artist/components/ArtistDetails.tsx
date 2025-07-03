@@ -16,7 +16,7 @@ interface ArtistDetailsProps {
 
 export default function ArtistDetails({ artist }: ArtistDetailsProps) {
   return (
-    <Card className="mx-auto mb-8 w-1/2">
+    <Card className="mx-auto mb-8 sm:w-1/2">
       <CardBody className="flex aspect-square overflow-hidden p-0">
         {artist.images?.length ? (
           <img

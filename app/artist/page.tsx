@@ -29,7 +29,7 @@ export default async function ArtistPage({ searchParams }: ArtistPageProps) {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto">
       <ArtistDetails artist={artist} />
       <MusicCollection albums={albums} />
     </div>

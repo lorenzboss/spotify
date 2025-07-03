@@ -63,8 +63,8 @@ export default function Home() {
 
   return (
     <div className="flex flex-col items-center">
-      <h1 className="text-4xl font-bold">Spotify API</h1>
-      <div className="mt-5 w-1/2">
+      <h1 className="mb-8 mt-4 text-4xl font-bold">Spotify API</h1>
+      <div className="w-full md:w-1/2">
         <Autocomplete
           className="w-full"
           defaultItems={artists}
