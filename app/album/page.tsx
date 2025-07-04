@@ -19,11 +19,11 @@ function AlbumHeader({ album }: { album: any }) {
 
   return (
     <Card className="mb-8 overflow-hidden">
-      <div className="flex flex-col md:flex-row">
+      <div className="flex flex-col sm:flex-row">
         {album.images && album.images.length > 0 ? (
           <img
             alt={album.name}
-            className="h-64 w-64 flex-shrink-0 object-cover"
+            className="aspect-square w-full flex-shrink-0 object-cover sm:w-64"
             src={album.images[0].url}
           />
         ) : (
