@@ -4,7 +4,7 @@ import { HeartFilledIcon } from "./icons";
 
 export default function Footer() {
   return (
-    <footer className="flex w-full flex-col items-center space-y-2 py-1">
+    <footer className="flex w-full flex-col items-center space-y-2 px-2 py-6">
       <p>
         View and edit this code on{" "}
         <Link isExternal href="https://github.com/lorenzboss/portfolio">
