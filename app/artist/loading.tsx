@@ -3,9 +3,9 @@ import { Skeleton } from "@heroui/skeleton";
 
 export default function ArtistLoading() {
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto">
       {/* Artist Details Skeleton */}
-      <Card className="mx-auto mb-8 w-1/2">
+      <Card className="mx-auto mb-8 sm:w-1/2">
         <CardBody className="p-0">
           <Skeleton className="aspect-square w-full rounded-lg" />
         </CardBody>
@@ -14,7 +14,7 @@ export default function ArtistLoading() {
             <div className="w-full md:w-2/3">
               <Skeleton className="mb-2 h-8 w-3/4 rounded-lg" />
             </div>
-            <div className="flex w-full flex-col items-start gap-2 md:w-1/3 md:items-end">
+            <div className="flex w-full flex-col items-start gap-5 sm:gap-2 md:w-1/3 md:items-end">
               <Skeleton className="mb-1 h-5 w-32 rounded-lg" />
               <Skeleton className="mb-2 h-5 w-36 rounded-lg" />
             </div>

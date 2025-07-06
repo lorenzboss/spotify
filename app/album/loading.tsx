@@ -3,11 +3,11 @@ import { Skeleton } from "@heroui/skeleton";
 
 export default function Loading() {
   return (
-    <div className="container mx-auto space-y-8 px-4 py-8">
+    <div className="container mx-auto space-y-8">
       {/* Album Header Skeleton */}
       <Card className="overflow-hidden">
-        <div className="flex flex-col md:flex-row">
-          <Skeleton className="h-64 w-64 flex-shrink-0 rounded-none" />
+        <div className="flex flex-col sm:flex-row">
+          <Skeleton className="aspect-square w-full flex-shrink-0 rounded-none sm:w-64" />
           <CardBody className="flex flex-col justify-between space-y-4 p-6">
             <div className="space-y-2">
               <Skeleton className="h-8 w-2/3 rounded" />
