@@ -4,10 +4,7 @@ import { fontSans } from "@/lib/fonts";
 import "@/styles/globals.css";
 import clsx from "clsx";
 import { Metadata, Viewport } from "next";
-import { Roboto_Serif } from "next/font/google";
 import { Providers } from "./providers";
-
-const robotoSerif = Roboto_Serif({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Spotify API",

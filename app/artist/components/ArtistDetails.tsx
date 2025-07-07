@@ -1,5 +1,6 @@
 import { Card, CardBody, CardFooter } from "@heroui/card";
 import { Chip } from "@heroui/chip";
+import Image from "next/image";
 import { AvatarIcon } from "../../../components/icons";
 
 interface Artist {
@@ -19,10 +20,12 @@ export default function ArtistDetails({ artist }: ArtistDetailsProps) {
     <Card className="mx-auto mb-8 sm:w-1/2">
       <CardBody className="flex aspect-square overflow-hidden p-0">
         {artist.images?.length ? (
-          <img
+          <Image
             alt={artist.name}
             className="h-full w-full object-cover"
+            height={500}
             src={artist.images[0].url}
+            width={500}
           />
         ) : (
           <AvatarIcon className="m-auto" size={208} />

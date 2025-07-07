@@ -7,6 +7,7 @@ import { fetchArtists } from "../lib/data";
 import { Artist } from "../lib/definitions";
 
 import { AvatarIcon, SearchIcon } from "@/components/icons";
+import Image from "next/image";
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -83,10 +84,12 @@ export default function Home() {
                 {artist.images &&
                 artist.images.length > 0 &&
                 artist.images[0]?.url ? (
-                  <img
+                  <Image
                     alt={artist.name}
                     className="h-10 w-10 rounded-full object-cover"
+                    height={40}
                     src={artist.images[0].url}
+                    width={40}
                   />
                 ) : (
                   <AvatarIcon size={40} />

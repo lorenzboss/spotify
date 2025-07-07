@@ -65,9 +65,9 @@ export function TrackTable({ tracks }: TrackTableProps) {
     <Card className="overflow-x-auto">
       <Table
         aria-label="Album tracks"
+        className="min-w-[500px]"
         sortDescriptor={sortDescriptor}
         onSortChange={setSortDescriptor}
-        className="min-w-[500px]"
       >
         <TableHeader>
           <TableColumn key="name" allowsSorting>

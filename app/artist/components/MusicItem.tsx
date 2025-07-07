@@ -1,4 +1,5 @@
 import { Card, CardBody, CardFooter } from "@heroui/card";
+import Image from "next/image";
 import Link from "next/link";
 import { MusicIcon } from "../../../components/icons";
 
@@ -16,10 +17,12 @@ export default function MusicItem({ item }: MusicItemProps) {
     <Card isPressable as={Link} href={`/album?id=${item.id}`}>
       <CardBody className="p-0">
         {item.images?.length ? (
-          <img
+          <Image
             alt={item.name}
             className="aspect-square w-full object-cover"
+            height={200}
             src={item.images[0].url}
+            width={200}
           />
         ) : (
           <MusicIcon className="m-auto" size={100} />

@@ -5,6 +5,7 @@ import { fetchAlbumDetails } from "@/lib/data";
 import { formatDate } from "@/lib/formatters";
 import { Card, CardBody } from "@heroui/card";
 import { Chip } from "@heroui/chip";
+import Image from "next/image";
 import Link from "next/link";
 
 interface AlbumPageProps {
@@ -21,10 +22,12 @@ function AlbumHeader({ album }: { album: any }) {
     <Card className="mb-8 overflow-hidden">
       <div className="flex flex-col sm:flex-row">
         {album.images && album.images.length > 0 ? (
-          <img
+          <Image
             alt={album.name}
             className="aspect-square w-full flex-shrink-0 object-cover sm:w-64"
+            height={256}
             src={album.images[0].url}
+            width={256}
           />
         ) : (
           <div className="flex aspect-square h-64 w-64 items-center justify-center bg-default-200">
