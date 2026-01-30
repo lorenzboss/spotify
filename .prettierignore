@@ -1,0 +1,15 @@
+.now
+.changeset
+dist
+esm
+public
+tests
+scripts
+.DS_Store
+node_modules
+coverage
+.next
+build
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
